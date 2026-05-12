@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Чек-лист по выбору VPS, GPU, API или гибридной схемы для n8n, Ollama, Open WebUI, Telegram-ботов и AI-агентов.">
+  <title>AI Infrastructure Checklist</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="logo" href="#top" aria-label="AI Infrastructure Checklist">AI Infra Checklist</a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Меню</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#quick-choice">Быстрый выбор</a>
+        <a href="#configs">Конфигурации</a>
+        <a href="#api-or-server">API или сервер</a>
+        <a href="#mistakes">Ошибки</a>
+        <a href="#stack">Стек</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">VPS · GPU · API · n8n · Ollama · Open WebUI</p>
+        <h1>AI Infrastructure Checklist</h1>
+        <p class="hero-subtitle">Как выбрать VPS, GPU, API или гибридную схему для n8n, Ollama, Open WebUI, Telegram-ботов и AI-агентов.</p>
+        <div class="hero-actions" aria-label="Основные ссылки">
+          <a class="button button-primary" href="https://wturm.ru/ai-llm/" target="_blank" rel="noopener">Открыть калькулятор на wturm.ru</a>
+          <a class="button button-secondary" href="https://wturm.ru/ai-llm/nastroyka-ai-infrastruktury/" target="_blank" rel="noopener">Настройка под ключ</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Короткая подсказка">
+        <span class="status-dot"></span>
+        <h2>Коротко</h2>
+        <p>Для n8n, ботов и AI-агентов чаще всего хватает VPS и внешнего LLM API. GPU нужен, когда модель или генерация изображений запускается локально.</p>
+      </aside>
+    </section>
+  </header>
+
+  <main>
+    <section class="section" id="quick-choice">
+      <div class="section-heading">
+        <p class="section-kicker">01</p>
+        <h2>Быстрый выбор</h2>
+        <p>Если нужно быстро прикинуть схему, начните с этой таблицы. Цифры ниже — рабочие ориентиры, не универсальная гарантия для любого проекта.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Задача</th>
+              <th>Что выбрать</th>
+              <th>Минимум</th>
+              <th>Когда нужен GPU</th>
+              <th>Подробно</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>n8n и AI-агенты</td>
+              <td>VPS + API</td>
+              <td>4 vCPU / 8 GB RAM</td>
+              <td>Обычно не нужен</td>
+              <td><a href="https://wturm.ru/ai-llm/vps-dlya-n8n-ai-agentov/" target="_blank" rel="noopener">разбор VPS</a></td>
+            </tr>
+            <tr>
+              <td>Ollama</td>
+              <td>VPS или GPU</td>
+              <td>4 vCPU / 16 GB RAM</td>
+              <td>Для тяжёлых моделей</td>
+              <td><a href="https://wturm.ru/ai-llm/vps-dlya-ollama/" target="_blank" rel="noopener">VPS для Ollama</a></td>
+            </tr>
+            <tr>
+              <td>Open WebUI</td>
+              <td>VPS + Ollama/API</td>
+              <td>4 vCPU / 8-16 GB RAM</td>
+              <td>Если модели локальные</td>
+              <td><a href="https://wturm.ru/ai-llm/open-webui-na-servere/" target="_blank" rel="noopener">Open WebUI</a></td>
+            </tr>
+            <tr>
+              <td>LLM API</td>
+              <td>OpenRouter/аналоги</td>
+              <td>Сервер не обязателен</td>
+              <td>Не нужен</td>
+              <td><a href="https://wturm.ru/ai-llm/analogi-openrouter/" target="_blank" rel="noopener">API-провайдеры</a></td>
+            </tr>
+            <tr>
+              <td>Stable Diffusion/ComfyUI</td>
+              <td>GPU cloud</td>
+              <td>RTX 4090/A100</td>
+              <td>Нужен</td>
+              <td><a href="https://wturm.ru/ai-llm/gpu-hosting-dlya-neirosetey/" target="_blank" rel="noopener">GPU-хостинг</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section" id="configs">
+      <div class="section-heading">
+        <p class="section-kicker">02</p>
+        <h2>Минимальные конфигурации</h2>
+        <p>Берите минимум только для тестов. Для рабочих сценариев лучше оставить запас по RAM, диску и логам.</p>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Сценарий</th>
+              <th>CPU</th>
+              <th>RAM</th>
+              <th>SSD</th>
+              <th>Комментарий</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Тесты</td>
+              <td>2 vCPU</td>
+              <td>4 GB</td>
+              <td>40-60 GB</td>
+              <td>Простые сценарии</td>
+            </tr>
+            <tr>
+              <td>n8n + API</td>
+              <td>4 vCPU</td>
+              <td>8 GB</td>
+              <td>80-120 GB</td>
+              <td>Нормальный старт</td>
+            </tr>
+            <tr>
+              <td>Ollama без GPU</td>
+              <td>4 vCPU</td>
+              <td>16 GB</td>
+              <td>120 GB</td>
+              <td>Лёгкие модели</td>
+            </tr>
+            <tr>
+              <td>Open WebUI + Ollama/API</td>
+              <td>4 vCPU</td>
+              <td>16 GB</td>
+              <td>120 GB</td>
+              <td>Личный чат</td>
+            </tr>
+            <tr>
+              <td>Несколько сервисов</td>
+              <td>8 vCPU</td>
+              <td>16-32 GB</td>
+              <td>200+ GB</td>
+              <td>С запасом</td>
+            </tr>
+            <tr>
+              <td>Тяжёлые LLM/изображения</td>
+              <td>GPU</td>
+              <td>32+ GB</td>
+              <td>250+ GB</td>
+              <td>GPU cloud</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section split" id="api-or-server">
+      <div class="section-heading compact">
+        <p class="section-kicker">03</p>
+        <h2>API или свой сервер</h2>
+        <p>Для большинства стартовых проектов не нужно сразу покупать GPU. Часто проще держать логику на VPS, а модели вызывать через API.</p>
+      </div>
+
+      <div class="cards-grid">
+        <article class="info-card">
+          <h3>API</h3>
+          <p>Проще и быстрее для старта. Не нужно обслуживать модели, драйверы и GPU. Минус — зависимость от провайдера и тарифов.</p>
+        </article>
+        <article class="info-card">
+          <h3>Свой сервер</h3>
+          <p>Больше контроля над схемой, данными и окружением. Но нужны обновления, SSL, бэкапы, логи и базовая безопасность.</p>
+        </article>
+        <article class="info-card">
+          <h3>GPU</h3>
+          <p>Нужен для тяжёлых локальных моделей и генерации изображений. Для n8n, вебхуков и API-агентов сам по себе GPU обычно лишний.</p>
+        </article>
+        <article class="info-card">
+          <h3>Гибрид</h3>
+          <p>Практичная схема: VPS держит n8n, бота и базу, а LLM работает через API. Если задача вырастет, GPU можно добавить позже.</p>
+        </article>
+      </div>
+
+      <p class="text-link">Подробнее: <a href="https://wturm.ru/ai-llm/api-ili-svoy-server-dlya-llm/" target="_blank" rel="noopener">API или свой сервер для LLM</a></p>
+    </section>
+
+    <section class="section" id="mistakes">
+      <div class="section-heading">
+        <p class="section-kicker">04</p>
+        <h2>Типовые ошибки</h2>
+        <p>Большинство проблем начинается не с модели, а с маленького VPS, открытых панелей, забытых бэкапов и неконтролируемых API-вызовов.</p>
+      </div>
+
+      <ul class="check-list mistakes-list">
+        <li>Брать VPS на 1 GB RAM.</li>
+        <li>Запускать тяжёлые модели без GPU.</li>
+        <li>Не делать бэкапы.</li>
+        <li>Открывать панели наружу без защиты.</li>
+        <li>Не ставить SSL.</li>
+        <li>Не ограничивать расходы на API.</li>
+        <li>Хранить токены в открытом виде.</li>
+        <li>Строить рабочий проект на бесплатных лимитах.</li>
+      </ul>
+    </section>
+
+    <section class="section" id="stack">
+      <div class="section-heading">
+        <p class="section-kicker">05</p>
+        <h2>Базовый стек для n8n/AI-агента</h2>
+        <p>Это не единственный вариант, но с такой базой проще поддерживать проект и переносить его между серверами.</p>
+      </div>
+
+      <div class="tag-cloud" aria-label="Базовый стек">
+        <span>Ubuntu</span>
+        <span>Docker</span>
+        <span>Docker Compose</span>
+        <span>n8n</span>
+        <span>PostgreSQL</span>
+        <span>nginx/reverse proxy</span>
+        <span>SSL</span>
+        <span>домен</span>
+        <span>LLM API</span>
+        <span>бэкапы</span>
+        <span>мониторинг логов</span>
+      </div>
+    </section>
+
+    <section class="final-cta" aria-label="Финальный блок">
+      <div>
+        <p class="section-kicker">Дальше</p>
+        <h2>Нужен подбор под конкретную задачу?</h2>
+        <p>Если нужно выбрать между VPS, GPU, API и гибридной схемой, начните с калькулятора AI-инфраструктуры.</p>
+      </div>
+      <a class="button button-primary" href="https://wturm.ru/ai-llm/" target="_blank" rel="noopener">Открыть калькулятор</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>AI Infrastructure Checklist. Статичная страница для GitHub Pages.</p>
+    <a href="#top">Наверх</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
