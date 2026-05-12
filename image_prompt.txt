@@ -1,0 +1,8 @@
+GitHub Pages / repository social preview image prompt
+
+Format: 1280x640 px, PNG or JPG, final file under 1 MB.
+Style: dark-blue technical minimalism, clean GitHub-friendly landing preview, readable at small size.
+Text on image: “AI Infrastructure Checklist” only.
+Scene: an abstract infrastructure map: VPS server card, GPU cloud block, API connector lines, n8n workflow nodes, small chat bubble for Telegram bot, and dashboard-like Open WebUI panel. No real logos.
+Palette: deep navy background, white cards, cyan and green accents, soft grid lines.
+Avoid: fake official logos, tiny UI text, long captions, photorealistic people/hands, clutter, aggressive cyberpunk glow.
